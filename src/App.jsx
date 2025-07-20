@@ -1,5 +1,6 @@
 import './App.css'
-import {ToastContainer} from "react-toastify/unstyled";
+import {ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {Route, Routes} from "react-router-dom";
 import Login from "./pages/Login.jsx";
 import Home from "./pages/Home.jsx";
