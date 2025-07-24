@@ -97,16 +97,10 @@ const EmailVerify = () => {
                         />
                     ))}
                 </div>
-
-
-
                 <button className="btn btn-primary w-100 fw-semibold" disabled={loading} onClick={handleVerify} >
                     {loading ? "Verifying..." : "Verify Email"}
                 </button>
-
-
             </div>
-
         </div>
     )
 }

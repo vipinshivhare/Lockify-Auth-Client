@@ -100,9 +100,6 @@ const Menubar = () => {
                    Login <i className="bi bi-arrow-right ms-2"></i>
                </div>
            )}
-
-
-
        </nav>
     )
 }
