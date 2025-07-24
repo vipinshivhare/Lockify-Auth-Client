@@ -37,7 +37,9 @@ export const AppContextProvider = (props) => {
     const getAuthState = async () => {
         try {
             const response = await axios.get(`${backendURL}/is-authenticated`, {
-                headers: authHeaders()
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("jwtToken")}`
+                }
             });
             if (response.status === 200) {
                 setIsLoggedIn(true);
@@ -49,6 +51,7 @@ export const AppContextProvider = (props) => {
             console.log(error);
         }
     };
+
 
     useEffect(() => {
         getAuthState();

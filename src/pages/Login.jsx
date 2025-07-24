@@ -1,4 +1,5 @@
 import {Link, useNavigate} from "react-router-dom";
+import { assets } from "../assets/assets.js";
 import {useContext, useState} from "react";
 import axios from "axios";
 import {AppContext} from "../context/AppContext.jsx";
