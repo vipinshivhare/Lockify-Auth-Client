@@ -25,7 +25,9 @@ const Login = () => {
         try{
             if(isCreateAccount){
                 // register API
-                const response = await axios.post(`${backendURL}/register`, {name, email, password});
+                const response = await axios.post(`${backendURL}/register`,
+                    {name, email, password},
+                    { withCredentials: true });
                 if(response.status === 201) {
                     navigate("/");
                     toast.success("Account created successfully!");
@@ -33,7 +35,9 @@ const Login = () => {
                     toast.error("Email already exist!");
                 }
             } else {
-                const response = await axios.post(`${backendURL}/login`, {email, password});
+                const response = await axios.post(`${backendURL}/login`,
+                    {email, password},
+                    { withCredentials: true });
                 if(response.status === 200) {
                     setIsLoggedIn(true);
                     getUserData();
