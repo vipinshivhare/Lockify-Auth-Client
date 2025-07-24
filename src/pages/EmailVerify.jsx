@@ -47,32 +47,31 @@ const EmailVerify = () => {
 
         setLoading(true);
         try {
-            const token = localStorage.getItem("jwtToken"); // ✅ login ke baad store kiya tha
+            const token = localStorage.getItem("jwtToken");
             const response = await axios.post(
                 backendURL + "/verify-otp",
-                { otp }, // body me sirf otp
+                { otp },
                 {
                     headers: {
-                        Authorization: `Bearer ${token}` // ✅ token header me bhejo
+                        Authorization: `Bearer ${token}`
                     }
                 }
             );
 
             if (response.status === 200) {
-                toast.success("OTP verified successfully!");
+                toast.success("OTP verified successfully");
                 getUserData();
                 navigate("/");
             } else {
                 toast.error("Invalid OTP");
             }
         } catch (error) {
-            toast.error(
-                error?.response?.data?.message || "Failed to verify OTP. Please try again."
-            );
+            toast.error(error.response?.data?.message || "Failed to verify OTP. Please try again later.");
         } finally {
             setLoading(false);
         }
     };
+
 
 
     useEffect(() => {
