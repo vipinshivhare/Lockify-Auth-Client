@@ -38,19 +38,24 @@ const Menubar = () => {
     }
 
     const sendVerificationOtp = async () => {
-        try{
+        try {
             axios.defaults.withCredentials = true;
-            const response = await axios.post(backendURL + "/send-otp");
-            if(response.status === 200) {
+            const response = await axios.post(
+                backendURL + "/send-otp",
+                { email: userData.email },
+                { withCredentials: true }
+            );
+            if (response.status === 200) {
                 navigate("/email-verify");
-                toast.success("OTP has been set successfully.");
-            } else{
+                toast.success("OTP has been sent successfully.");
+            } else {
                 toast.error("Unable to send OTP!");
             }
-        } catch (error){
-            toast.error(error.response.data.message);
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Something went wrong");
         }
-    }
+    };
+
 
     return (
        <nav className="navbar bg-white px-5 py-4 d-flex justify-content-between align-items-center">
