@@ -40,27 +40,40 @@ const EmailVerify = () => {
 
     const handleVerify = async () => {
         const otp = inputRef.current.map(input => input.value).join("");
-        if(otp.length !== 6){
-            toast.error("Please enter all 6 digit of the OTP");
+        if (otp.length !== 6) {
+            toast.error("Please enter all 6 digits of the OTP");
             return;
         }
 
         setLoading(true);
-        try{
-           const response = await axios.post(backendURL+"/verify-otp", {otp});
-            if(response.status === 200){
-                toast.success(" OTP Verification successfully");
+        try {
+            const token = localStorage.getItem("jwtToken"); // ✅ login ke baad store kiya tha
+            const response = await axios.post(
+                backendURL + "/verify-otp",
+                { otp }, // body me sirf otp
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}` // ✅ token header me bhejo
+                    }
+                }
+            );
+
+            if (response.status === 200) {
+                toast.success("OTP verified successfully!");
                 getUserData();
                 navigate("/");
-            }else{
+            } else {
                 toast.error("Invalid OTP");
             }
-        } catch(error) {
-            toast.error("Failed to verify the OTP. Please try again later.");
+        } catch (error) {
+            toast.error(
+                error?.response?.data?.message || "Failed to verify OTP. Please try again."
+            );
         } finally {
             setLoading(false);
         }
-    }
+    };
+
 
     useEffect(() => {
         isLoggedIn && userData && userData.isAccountVerified && navigate("/");
