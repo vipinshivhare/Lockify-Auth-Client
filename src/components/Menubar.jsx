@@ -25,7 +25,6 @@ const Menubar = () => {
 
     const handleLogout = async () => {
         try{
-            axios.defaults.withCredentials = true;
             const response = await axios.post(backendURL+ "/logout", );
             if(response.status === 200) {
                 setIsLoggedIn(false);
@@ -39,11 +38,14 @@ const Menubar = () => {
 
     const sendVerificationOtp = async () => {
         try {
-            axios.defaults.withCredentials = true;
             const response = await axios.post(
                 backendURL + "/send-otp",
-                { email: userData.email },
-                { withCredentials: true }
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('jwtToken')}`
+                    }
+                }
             );
             if (response.status === 200) {
                 navigate("/email-verify");
@@ -55,6 +57,7 @@ const Menubar = () => {
             toast.error(error.response?.data?.message || "Something went wrong");
         }
     };
+
 
 
     return (
