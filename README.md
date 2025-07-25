@@ -112,7 +112,7 @@ client/
 
 ## License
 
-Copyright © 2024 Vipin Shivhare
+Copyright © 2025 Vipin Shivhare
 
 This project is licensed under the MIT License. If you use or copy any part of this project, please give appropriate credit to Vipin Shivhare.
 
