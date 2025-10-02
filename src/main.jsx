@@ -12,13 +12,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-
-<BrowserRouter>
-    <AppContextProvider>
-        <App />
-    </AppContextProvider>
-
-</BrowserRouter>
-
-
-)
+    <StrictMode>
+      <BrowserRouter>
+        <AppContextProvider>
+          <App />
+        </AppContextProvider>
+      </BrowserRouter>
+    </StrictMode>
+  );
+  
