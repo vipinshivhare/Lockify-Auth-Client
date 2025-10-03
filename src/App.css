@@ -1,0 +1,112 @@
+/* Default (Desktop / Large Screens) */
+.Toastify__toast-container {
+  width: 360px !important;
+  right: 20px !important;
+  top: 20px !important;
+  left: auto !important;
+  padding: 0 !important;
+}
+
+.Toastify__toast {
+  font-size: 15px !important;
+  padding: 12px 14px !important;
+  min-height: 44px !important;
+  border-radius: 12px !important;
+  max-width: 100% !important;
+  word-wrap: break-word;
+}
+
+/* Tablets (481px - 768px) */
+@media (max-width: 768px) {
+  .Toastify__toast-container {
+    width: 280px !important;
+    right: 12px !important;
+  }
+
+  .Toastify__toast {
+    font-size: 14px !important;
+    padding: 10px 12px !important;
+    min-height: 40px !important;
+    border-radius: 10px !important;
+  }
+}
+
+/* Small Phones (max 480px) */
+@media (max-width: 480px) {
+  .Toastify__toast-container {
+    width: 280px !important;   /* same as 500px width */
+    right: 12px !important;
+    top: 12px !important;
+    left: auto !important;
+    transform: none !important;
+  }
+
+  .Toastify__toast {
+    font-size: 14px !important;       /* same as 500px toast */
+    padding: 10px 12px 10px 12px !important;  /* enough space for close button */
+    min-height: 40px !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .Toastify__toast-body {
+    flex: 1 !important;
+    white-space: nowrap !important;   /* keep text in one line */
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .Toastify__close-button {
+    position: absolute !important;
+    right: 8px !important;            /* properly aligned with toast */
+    top: 50% !important;
+    transform: translateY(-50%) scale(0.8); /* centered vertically */
+  }
+
+  .Toastify__toast-icon svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .custom-toast {
+    font-size: 14px !important;
+    max-width: 100% !important;
+    padding: 10px 36px 10px 12px !important; /* enough space for close button */
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+}
+
+
+
+/* Ultra Small Screens (<360px) */
+@media (max-width: 360px) {
+  .custom-toast {
+    font-size: 11px !important;
+    max-width: 95% !important;
+    padding: 6px 28px 6px 8px !important;
+  }
+}
+
+/* Toastify Custom Styling */
+.custom-toast {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important; /* space between icon and text */
+  padding: 8px 36px 8px 12px !important; /* right space for close btn */
+  font-size: 14px !important;
+  position: relative;
+}
+
+.custom-toast .Toastify__toast-icon {
+  margin-right: 6px !important; /* extra spacing for icon */
+}
+
+.custom-toast .Toastify__toast-body {
+  flex: 1 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
