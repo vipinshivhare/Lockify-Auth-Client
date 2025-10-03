@@ -30,8 +30,8 @@ const Login = () => {
             } else {
                 const response = await axios.post(`${backendURL}/login`, { email, password });
                 if(response.status === 200) {
-                    const token = response.data.token; // AuthResponse me jo field ho
-                    localStorage.setItem('jwtToken', token); // store token
+                    const token = response.data.token;
+                    localStorage.setItem('jwtToken', token);
                     setIsLoggedIn(true);
                     getUserData();
                     navigate("/");
@@ -71,11 +71,12 @@ const Login = () => {
 
     {/* Login / Signup Card */}
     <div
-        className="card p-4"
+        className="card p-4 shadow-lg border-0"
         style={{
             width: "90%",
             maxWidth: "400px",
             minWidth: "280px",
+            borderRadius: "20px",   // 🔹 Rounded shape like reset password
             boxSizing: "border-box",
         }}
     >

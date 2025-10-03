@@ -98,12 +98,15 @@ const ResetPassword = () => {
             {/* Logo top-left */}
             <Link
                 to="/"
-                className="position-absolute d-flex align-items-start"
-                style={{ top: "10px", left: "10px" }}
+                className="position-absolute d-flex align-items-start text-decoration-none"
+                style={{ top: "10px", left: "10px", color: "inherit" }}
             >
                 <img src={assets.padlock} alt="logo" height={42} width={42} />
-                <span className="fw-bold fs-4 text-light ms-0" style={{ marginTop: "7px" }}>Lockify</span>
+                <span className="fw-bold fs-4 text-light ms-0" style={{ marginTop: "7px" }}>
+                    Lockify
+                </span>
             </Link>
+
 
             {/* Card */}
             <div
