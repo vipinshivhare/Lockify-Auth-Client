@@ -61,54 +61,118 @@ const Menubar = () => {
 
 
     return (
-       <nav className="navbar bg-white px-5 py-4 d-flex justify-content-between align-items-center">
-           <div className="d-flex align-items-center ">
+    //    <nav className="navbar bg-white px-5 py-4 d-flex justify-content-between align-items-center">
+    //        <div className="d-flex align-items-center ">
 
-               <img src={assets.padlock} alt="logo" width={42} height={42} />
-                <span className="fw-bold fs-4 text-dark"> Lockify</span>
-           </div>
+    //            <img src={assets.padlock} alt="logo" width={42} height={42} />
+    //             <span className="fw-bold fs-4 text-dark"> Lockify</span>
+    //        </div>
 
-           {userData ? (
-               <div className="position-relative" ref={dropdownRef}>
-                    <div className="bg-dark text-white rounded-circle d-flex justify-content-center align-items-center"
+    //        {userData ? (
+    //            <div className="position-relative" ref={dropdownRef}>
+    //                 <div className="bg-dark text-white rounded-circle d-flex justify-content-center align-items-center"
+    //                     style={{
+    //                         width: "40px",
+    //                         height: "40px",
+    //                         cursor: "pointer",
+    //                         userSelect: "none",
+    //                     }}
+    //                      onClick={() => setDropdownOpen((prev) => !prev)}
+    //                 >
+    //                     {userData.name[0].toUpperCase()}
+    //                 </div>
+    //                {dropdownOpen &&  (
+    //                    <div className="position-absolute shadow bg-white rounded p-2"
+    //                         style={{
+    //                             top: "50px",
+    //                             right: 0,
+    //                             zIndex: "100",
+    //                         }}
+    //                    >
+    //                        {!userData.isAccountVerified && (
+    //                            <div className="dropdown-item py-1 px-2 " style={{cursor: "pointer"}} onClick={sendVerificationOtp} >
+    //                                Verify email
+    //                            </div>
+    //                        )}
+    //                        <div className="dropdown-item py-1 px-2 text-danger" style={{ cursor: "pointer"}}
+    //                             onClick={handleLogout} >
+    //                            Logout
+    //                        </div>
+
+
+    //                    </div>
+    //                )}
+    //            </div>
+    //        ) : (
+    //            <div className="btn btn-outline-dark rounded-pill px-3" onClick={()=> navigate("/login")}>
+    //                Login <i className="bi bi-arrow-right ms-2"></i>
+    //            </div>
+    //        )}
+    //    </nav>
+
+
+    <nav className="navbar bg-white d-flex justify-content-between" style={{ padding: 0 }}>
+    {/* Left side: logo + name */}
+    <div className="d-flex align-items-start" style={{ paddingLeft: "10px", paddingTop: "10px" }}>
+        <img src={assets.padlock} alt="logo" width={42} height={42} />
+        <span className="fw-bold fs-4 text-dark ms-0" style={{ marginTop: "7px" }}>Lockify</span>
+    </div>
+
+    {/* Right side: login button or user dropdown */}
+    <div className="d-flex align-items-center" style={{ paddingRight: "10px", paddingTop: "10px"}}>
+        {userData ? (
+            <div className="position-relative" ref={dropdownRef}>
+                <div
+                    className="bg-dark text-white rounded-circle d-flex justify-content-center align-items-center"
+                    style={{
+                        width: "40px",
+                        height: "40px",
+                        cursor: "pointer",
+                        userSelect: "none",
+                    }}
+                    onClick={() => setDropdownOpen((prev) => !prev)}
+                >
+                    {userData.name[0].toUpperCase()}
+                </div>
+                {dropdownOpen && (
+                    <div
+                        className="position-absolute shadow bg-white rounded p-2"
                         style={{
-                            width: "40px",
-                            height: "40px",
-                            cursor: "pointer",
-                            userSelect: "none",
+                            top: "50px",
+                            right: 0,
+                            zIndex: 100,
                         }}
-                         onClick={() => setDropdownOpen((prev) => !prev)}
                     >
-                        {userData.name[0].toUpperCase()}
+                        {!userData.isAccountVerified && (
+                            <div
+                                className="dropdown-item py-1 px-2"
+                                style={{ cursor: "pointer" }}
+                                onClick={sendVerificationOtp}
+                            >
+                                Verify email
+                            </div>
+                        )}
+                        <div
+                            className="dropdown-item py-1 px-2 text-danger"
+                            style={{ cursor: "pointer" }}
+                            onClick={handleLogout}
+                        >
+                            Logout
+                        </div>
                     </div>
-                   {dropdownOpen &&  (
-                       <div className="position-absolute shadow bg-white rounded p-2"
-                            style={{
-                                top: "50px",
-                                right: 0,
-                                zIndex: "100",
-                            }}
-                       >
-                           {!userData.isAccountVerified && (
-                               <div className="dropdown-item py-1 px-2 " style={{cursor: "pointer"}} onClick={sendVerificationOtp} >
-                                   Verify email
-                               </div>
-                           )}
-                           <div className="dropdown-item py-1 px-2 text-danger" style={{ cursor: "pointer"}}
-                                onClick={handleLogout} >
-                               Logout
-                           </div>
+                )}
+            </div>
+        ) : (
+            <div
+                className="btn btn-outline-dark rounded-pill px-3"
+                onClick={() => navigate("/login")}
+            >
+                Login <i className="bi bi-arrow-right ms-2"></i>
+            </div>
+        )}
+    </div>
+</nav>
 
-
-                       </div>
-                   )}
-               </div>
-           ) : (
-               <div className="btn btn-outline-dark rounded-pill px-3" onClick={()=> navigate("/login")}>
-                   Login <i className="bi bi-arrow-right ms-2"></i>
-               </div>
-           )}
-       </nav>
     )
 }
 
